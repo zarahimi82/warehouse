@@ -24,12 +24,7 @@ public class BayController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ServiceResponse<GetBayDto>> getById(@PathVariable Long id) {
-
-        ServiceResponse<GetBayDto> response = bayService.getBay(id);
-        if (!response.isSuccess()) {
-            return ResponseEntity.badRequest().body(response);
-        }
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(bayService.getBay(id));
     }
 
     @GetMapping()
