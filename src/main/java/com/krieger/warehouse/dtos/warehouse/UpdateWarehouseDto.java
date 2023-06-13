@@ -11,13 +11,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewWarehousDto {
+public class UpdateWarehouseDto {
+    private Long id;
+
     @NotNull(message = "Code is required")
     @Pattern(regexp = "\\d{3}", message = "Code must contain exactly 3 digits")
     private String code;
 
     private String name;
 
-    @NotNull(message = "address is required")
+    @NotNull(message = "Address is required")
     private String address;
 }

@@ -1,8 +1,8 @@
 package com.krieger.warehouse.Services;
 
 import com.krieger.warehouse.dtos.warehouse.GetWarehouseDto;
-import com.krieger.warehouse.dtos.warehouse.NewWarehousDto;
-import com.krieger.warehouse.dtos.warehouse.UpdateWarehousDto;
+import com.krieger.warehouse.dtos.warehouse.NewWarehouseDto;
+import com.krieger.warehouse.dtos.warehouse.UpdateWarehouseDto;
 import com.krieger.warehouse.models.ServiceResponse;
 import com.krieger.warehouse.models.Warehouse;
 import com.krieger.warehouse.repositories.WarehaousRepository;
@@ -13,21 +13,17 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
-public class WarehousServiceImpl implements WarehousService {
+public class WarehouseServiceImpl implements WarehouseService {
 
     private final WarehaousRepository warehaousRepository;
     private static final ModelMapper modelMapper = new ModelMapper();
     private final ObjectValidator validator;
 
 
-    public WarehousServiceImpl(WarehaousRepository warehaousRepository, ObjectValidator validator) {
+    public WarehouseServiceImpl(WarehaousRepository warehaousRepository, ObjectValidator validator) {
         this.warehaousRepository = warehaousRepository;
         this.validator = validator;
     }
@@ -49,7 +45,7 @@ public class WarehousServiceImpl implements WarehousService {
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> AddWarehause(NewWarehousDto newWarehaus)
+    public ServiceResponse<GetWarehouseDto> AddWarehause(NewWarehouseDto newWarehaus)
     {   validator.validate(newWarehaus);
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {
@@ -73,7 +69,7 @@ public class WarehousServiceImpl implements WarehousService {
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> updateWarehause(UpdateWarehousDto uppdateWarehouseDto) {
+    public ServiceResponse<GetWarehouseDto> updateWarehause(UpdateWarehouseDto uppdateWarehouseDto) {
         validator.validate(uppdateWarehouseDto);
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {
