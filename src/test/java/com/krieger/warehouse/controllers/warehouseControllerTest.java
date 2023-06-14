@@ -65,7 +65,7 @@ public class warehouseControllerTest {
         // give
 
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(warehouseDto, true, "");
-        when(warehouseService.getWarehause(anyLong())).thenReturn(response);
+        when(warehouseService.getWarehouse(anyLong())).thenReturn(response);
 
         //When Then
         mockMvc.perform(get("/api/v1/warehouse/1").accept(MediaType.APPLICATION_JSON))
@@ -84,7 +84,7 @@ public class warehouseControllerTest {
     void testGetByIdNotFounde() throws Exception {
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(null, false, "No value present");
-        when(warehouseService.getWarehause(anyLong())).thenReturn(response);
+        when(warehouseService.getWarehouse(anyLong())).thenReturn(response);
 
         //When Then
         mockMvc.perform(get("/api/v1/warehouse/1").accept(MediaType.APPLICATION_JSON))
@@ -126,7 +126,7 @@ public class warehouseControllerTest {
     void testPostBay() throws Exception{
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(warehouseDto, true, "");
-        when(warehouseService.AddWarehause(any())).thenReturn(response);
+        when(warehouseService.AddWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(post("/api/v1/warehouse/")
@@ -147,7 +147,7 @@ public class warehouseControllerTest {
     void testPostBayBadRequest() throws Exception{
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(null, false, "");
-        when(warehouseService.AddWarehause(any())).thenReturn(response);
+        when(warehouseService.AddWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(post("/api/v1/warehouse/")
@@ -165,7 +165,7 @@ public class warehouseControllerTest {
         // give
         GetWarehouseDto updatedWarehouseDto = new GetWarehouseDto(1l,"001","name2" , "newAddress");
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(updatedWarehouseDto, true, "");
-        when(warehouseService.updateWarehause(any())).thenReturn(response);
+        when(warehouseService.updateWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(put("/api/v1/warehouse/")
@@ -186,7 +186,7 @@ public class warehouseControllerTest {
     void testPutBayBadRequest() throws Exception{
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(null, false, "");
-        when(warehouseService.updateWarehause(any())).thenReturn(response);
+        when(warehouseService.updateWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(put("/api/v1/warehouse/")
@@ -202,7 +202,7 @@ public class warehouseControllerTest {
     @Test
     void testDeleteBay() throws Exception{
         // give
-        doNothing().when(warehouseService).deleteWarehause(anyLong());
+        doNothing().when(warehouseService).deleteWarehouse(anyLong());
 
         // When Then
         mockMvc.perform(delete("/api/v1/warehouse/1"))
