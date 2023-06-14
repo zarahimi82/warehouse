@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -36,7 +37,7 @@ public class Warehouse {
     private String address;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "warehouse",fetch=FetchType.LAZY , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "warehouse", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Bay> Bays;
 
     public Warehouse(String code, String name, String address) {
@@ -44,7 +45,6 @@ public class Warehouse {
         this.name = name;
         this.address = address;
     }
-
 
     public Warehouse(Long id, String code, String name, String address) {
         this.id = id;
@@ -67,6 +67,7 @@ public class Warehouse {
     public int hashCode() {
         return Objects.hash(id, code);
     }
+
     @Override
     public String toString() {
         return "Warehouse [id=" + id + ", code=" + code + "]";

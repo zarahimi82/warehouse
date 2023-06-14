@@ -4,9 +4,6 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
 
-import javax.print.DocFlavor;
-import java.util.List;
-
 public class ValidOccupaiedHoldingPointValidator implements ConstraintValidator<ValidOccupiedHoldingPoint, Object> {
 
     private String HoldingPointField;
@@ -20,10 +17,10 @@ public class ValidOccupaiedHoldingPointValidator implements ConstraintValidator<
     }
 
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
-        Integer fieldValue =(Integer) new BeanWrapperImpl(value).getPropertyValue(OccupiedHoldingPointField);
-        Integer fieldMatchValue =(Integer) new BeanWrapperImpl(value).getPropertyValue(HoldingPointField);
+        Integer fieldValue = (Integer) new BeanWrapperImpl(value).getPropertyValue(OccupiedHoldingPointField);
+        Integer fieldMatchValue = (Integer) new BeanWrapperImpl(value).getPropertyValue(HoldingPointField);
 
-        boolean isValid =fieldValue>= 0  && fieldValue <=fieldMatchValue ;
+        boolean isValid = fieldValue >= 0 && fieldValue <= fieldMatchValue;
 
         if (!isValid) {
             context.disableDefaultConstraintViolation();
@@ -35,7 +32,5 @@ public class ValidOccupaiedHoldingPointValidator implements ConstraintValidator<
 
         return isValid;
     }
-
-
 }
 

@@ -2,7 +2,6 @@ package com.krieger.warehouse.converters;
 
 import org.modelmapper.AbstractConverter;
 import org.springframework.stereotype.Component;
-
 import java.util.HashSet;
 import java.util.stream.Collectors;
 

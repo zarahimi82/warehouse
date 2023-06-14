@@ -7,8 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class TagStringConverter extends AbstractConverter< String, HashSet<String>> {
-
+public class TagStringConverter extends AbstractConverter<String, HashSet<String>> {
 
     @Override
     protected HashSet<String> convert(String tags) {
@@ -21,6 +20,5 @@ public class TagStringConverter extends AbstractConverter< String, HashSet<Strin
             }
         }
         return (HashSet<String>) hashSet;
-
     }
 }

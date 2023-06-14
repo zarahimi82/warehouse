@@ -1,11 +1,6 @@
 package com.krieger.warehouse.dtos.bay;
 
 import com.krieger.warehouse.models.BayType;
-import com.krieger.warehouse.models.Warehouse;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

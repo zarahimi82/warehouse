@@ -1,8 +1,7 @@
 package com.krieger.warehouse.dtos.bay;
 
 import com.krieger.warehouse.models.BayType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.krieger.warehouse.validators.ValidOccupiedHoldingPoint;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -17,6 +16,7 @@ import java.util.HashSet;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ValidOccupiedHoldingPoint(OccupiedHoldingPointField = "occupiedHoldingPoint", HoldingPointField = "holldingPoint")
 public class UpdateBayDto {
     private Long id;
 

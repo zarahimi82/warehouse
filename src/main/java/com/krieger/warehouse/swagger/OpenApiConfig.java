@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.swagger;
+package com.krieger.warehouse.swagger;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -19,13 +19,13 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI awesomeAPI() {
         return new OpenAPI()
-                .info(new Info().title("Awesome API Title")
-                        .description("Awesome API Description")
+                .info(new Info().title("Warehouse APIs")
+                        .description("Warehouse APIs Description")
                         .version("1.0")
                         .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/LICENSE-2.0")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Ranga Karanam, in28minutes@gmail.com")
-                        .url("http://www.in28minutes.com"));
+                        .description("Zahra Rahimi, za.rahimi82@gmail.com")
+                        .url(""));
     }
 
 }

@@ -10,17 +10,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/v1/Bay")
 public class BayController {
-    @Autowired
+
     private final BayService bayService;
 
     public BayController(BayService bayService) {
         this.bayService = bayService;
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ServiceResponse<GetBayDto>> getById(@PathVariable Long id) {
@@ -31,9 +30,8 @@ public class BayController {
     public ResponseEntity<ServiceResponse<Page<GetBayDto>>> getAllBay(@RequestParam(defaultValue = "1") int pageNo,
                                                                       @RequestParam(defaultValue = "5") int pageSize,
                                                                       @RequestParam(defaultValue = "id") String sortField,
-                                                                      @RequestParam(defaultValue = "ASC") String sortOrder)
-    {
-        ServiceResponse<Page<GetBayDto>> response = bayService.getAll(pageNo,pageSize,sortField ,sortOrder);
+                                                                      @RequestParam(defaultValue = "ASC") String sortOrder) {
+        ServiceResponse<Page<GetBayDto>> response = bayService.getAll(pageNo, pageSize, sortField, sortOrder);
         if (!response.isSuccess()) {
             return ResponseEntity.badRequest().body(response);
         }
@@ -42,9 +40,8 @@ public class BayController {
 
 
     @PostMapping()
-    public ResponseEntity<ServiceResponse<GetBayDto>> newBay(@RequestBody NewBayDto newBay )
-    {
-        ServiceResponse<GetBayDto> response = bayService.AddBay(newBay);
+    public ResponseEntity<ServiceResponse<GetBayDto>> newBay(@RequestBody NewBayDto newBay) {
+        ServiceResponse<GetBayDto> response = bayService.addBay(newBay);
         if (!response.isSuccess()) {
             return ResponseEntity.badRequest().body(response);
         }
@@ -52,8 +49,7 @@ public class BayController {
     }
 
     @PutMapping()
-    public ResponseEntity<ServiceResponse<GetBayDto>> updateBay (@RequestBody UpdateBayDto updateBay)
-    {
+    public ResponseEntity<ServiceResponse<GetBayDto>> updateBay(@RequestBody UpdateBayDto updateBay) {
         ServiceResponse<GetBayDto> response = bayService.updateBay(updateBay);
         if (!response.isSuccess()) {
             return ResponseEntity.badRequest().body(response);
@@ -62,19 +58,16 @@ public class BayController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity  deleteBay(@PathVariable Long id) {
+    public ResponseEntity deleteBay(@PathVariable Long id) {
 
         try {
             bayService.deleteBay(id);
             return ResponseEntity.ok().build();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
 
     }
-
 
 
 }

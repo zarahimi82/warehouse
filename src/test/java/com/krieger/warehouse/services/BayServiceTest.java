@@ -70,7 +70,7 @@ public class BayServiceTest {
         when(bayRepository.save(any(Bay.class))).thenReturn(warehouse);
 
         // Act
-        ServiceResponse<GetBayDto> response = bayService.AddBay(newBayDto);
+        ServiceResponse<GetBayDto> response = bayService.addBay(newBayDto);
 
         // Assert
         assertGetBayDto(response);

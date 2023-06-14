@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.HashSet;
 
 
@@ -33,13 +32,11 @@ public class NewBayDto {
     @Max(value = 9, message = "Value must be less than or equal to 9")
     private int holldingPoint;
 
-
     private int occupiedHoldingPoint;
 
     private HashSet<String> tags;
 
     private Long warehouseId;
-
 
 
 }

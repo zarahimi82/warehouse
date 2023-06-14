@@ -14,7 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
@@ -45,7 +44,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> AddWarehouse(NewWarehouseDto newWarehouse)
+    public ServiceResponse<GetWarehouseDto> addWarehouse(NewWarehouseDto newWarehouse)
     {   validator.validate(newWarehouse);
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {

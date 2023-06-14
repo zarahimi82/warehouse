@@ -3,7 +3,6 @@ package com.krieger.warehouse.Services;
 import com.krieger.warehouse.dtos.bay.GetBayDto;
 import com.krieger.warehouse.dtos.bay.NewBayDto;
 import com.krieger.warehouse.dtos.bay.UpdateBayDto;
-import com.krieger.warehouse.dtos.warehouse.GetWarehouseDto;
 import com.krieger.warehouse.models.ServiceResponse;
 import org.springframework.data.domain.Page;
 
@@ -14,7 +13,7 @@ public interface BayService {
 
     public ServiceResponse<GetBayDto> getBay(Long id);
 
-    public ServiceResponse<GetBayDto> AddBay(NewBayDto newBay);
+    public ServiceResponse<GetBayDto> addBay(NewBayDto newBay);
 
     public void deleteBay(Long id);
 

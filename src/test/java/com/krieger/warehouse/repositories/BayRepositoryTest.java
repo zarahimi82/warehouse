@@ -28,8 +28,9 @@ public class BayRepositoryTest {
 
     @BeforeEach
     public void setup() {
-        bay1 = new Bay(1l,1,1,1, BayType.CART,5,1,"tag1;Tag2",new Warehouse(1l,"001","warehouse1","Berlin"));;
-        bay2 = new Bay(2l,2,1,1, BayType.CART,5,1,"tag1;Tag2",new Warehouse(1l,"001","warehouse1","Berlin"));
+        bay1 = new Bay(1l, 1, 1, 1, BayType.CART, 5, 1, "tag1;Tag2", new Warehouse(1l, "001", "warehouse1", "Berlin"));
+        ;
+        bay2 = new Bay(2l, 2, 1, 1, BayType.CART, 5, 1, "tag1;Tag2", new Warehouse(1l, "001", "warehouse1", "Berlin"));
     }
 
     @Test
@@ -39,7 +40,7 @@ public class BayRepositoryTest {
 
         // Assert
         Assertions.assertTrue(foundBay.isPresent());
-        assertBay(foundBay.get(),bay1);
+        assertBay(foundBay.get(), bay1);
     }
 
     @Test
@@ -56,14 +57,15 @@ public class BayRepositoryTest {
     @Test
     public void testSave() {
         // Arrange
-        Bay newBay = new Bay(20,1,1, BayType.CART,5,1,"tag1;Tag2",new Warehouse(1l,"001","warehouse1","Berlin"));;
+        Bay newBay = new Bay(20, 1, 1, BayType.CART, 5, 1, "tag1;Tag2", new Warehouse(1l, "001", "warehouse1", "Berlin"));
+        ;
 
         // Act
         Bay savedBay = bayRepository.save(newBay);
 
         // Assert
         Assertions.assertNotNull(savedBay.getId());
-        assertBay(newBay,savedBay);
+        assertBay(newBay, savedBay);
     }
 
     @Test

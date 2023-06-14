@@ -6,15 +6,11 @@ import com.krieger.warehouse.dtos.warehouse.UpdateWarehouseDto;
 import com.krieger.warehouse.models.ServiceResponse;
 import org.springframework.data.domain.Page;
 
-import java.util.List;
-
 public interface WarehouseService {
-
-
 
     public ServiceResponse<GetWarehouseDto> getWarehouse(Long id);
 
-    public ServiceResponse<GetWarehouseDto> AddWarehouse(NewWarehouseDto newWarehous);
+    public ServiceResponse<GetWarehouseDto> addWarehouse(NewWarehouseDto newWarehouse);
 
     public void deleteWarehouse(Long id);
 

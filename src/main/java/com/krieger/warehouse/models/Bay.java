@@ -6,15 +6,15 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
 import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
-@Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueNumbersAndWarehouse", columnNames = { "rowNumber", "shelfNumber" ,"levelNumber" ,"warehouse_id" }) })
+@Table(uniqueConstraints = {@UniqueConstraint(name = "UniqueNumbersAndWarehouse", columnNames = {"rowNumber", "shelfNumber", "levelNumber", "warehouse_id"})})
 public class Bay {
 
     @Id
@@ -39,12 +39,11 @@ public class Bay {
     private String tags;
 
     @JsonBackReference
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
-    public Bay()
-    {
+    public Bay() {
         warehouse = new Warehouse();
     }
 
@@ -69,7 +68,7 @@ public class Bay {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bay bay = (Bay) o;
-        return Objects.equals(id, bay.id) ;
+        return Objects.equals(id, bay.id);
     }
 
     // Override hashCode() method

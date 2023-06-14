@@ -63,7 +63,7 @@ public class WarehouseServiceTest {
         when(warehouseRepository.save(any(Warehouse.class))).thenReturn(warehouse);
 
         // Act
-        ServiceResponse<GetWarehouseDto> response = warehouseService.AddWarehouse(newWarehouseDto);
+        ServiceResponse<GetWarehouseDto> response = warehouseService.addWarehouse(newWarehouseDto);
 
         // Assert
         assertGetWarehouseDto(response);
@@ -103,8 +103,8 @@ public class WarehouseServiceTest {
         GetWarehouseDto warehouseDto = response.getData();
         Assertions.assertEquals(response.isSuccess(), true);
         Assertions.assertEquals(response.getMessage(), "");
-        Assertions.assertEquals("001", response.getData().getCode());
-        Assertions.assertEquals("name2", response.getData().getName());
-        Assertions.assertEquals("address2", response.getData().getAddress());
+        Assertions.assertEquals("001", warehouseDto.getCode());
+        Assertions.assertEquals("name2", warehouseDto.getName());
+        Assertions.assertEquals("address2", warehouseDto.getAddress());
     }
 }

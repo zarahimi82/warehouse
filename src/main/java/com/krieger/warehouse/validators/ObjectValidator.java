@@ -12,13 +12,11 @@ public class ObjectValidator<T> {
     private final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
     private final Validator validator = validatorFactory.getValidator();
 
-    public void validate(T objectToValidate)
-    {
-        Set<ConstraintViolation<T>> violationSet =validator.validate(objectToValidate);
-        if (!violationSet.isEmpty())
-        {
+    public void validate(T objectToValidate) {
+        Set<ConstraintViolation<T>> violationSet = validator.validate(objectToValidate);
+        if (!violationSet.isEmpty()) {
             var errorMessages = violationSet.stream().map(ConstraintViolation::getMessage).collect(Collectors.toSet());
-            throw  new ObjectNotValidException(errorMessages);
+            throw new ObjectNotValidException(errorMessages);
         }
     }
 }

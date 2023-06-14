@@ -63,7 +63,6 @@ public class warehouseControllerTest {
     @Test
     void testGetById() throws Exception {
         // give
-
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(warehouseDto, true, "");
         when(warehouseService.getWarehouse(anyLong())).thenReturn(response);
 
@@ -77,7 +76,6 @@ public class warehouseControllerTest {
                 .andExpect(jsonPath("$.data.name").value("name"))
                 .andExpect(jsonPath("$.data.address").value("address"))
                 .andDo(print());
-
     }
 
     @Test
@@ -93,7 +91,6 @@ public class warehouseControllerTest {
                 .andExpect(jsonPath("$.success").value(false))
                 .andExpect(jsonPath("$.data").isEmpty())
                 .andDo(print());
-
     }
 
     @Test
@@ -126,7 +123,7 @@ public class warehouseControllerTest {
     void testPostBay() throws Exception{
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(warehouseDto, true, "");
-        when(warehouseService.AddWarehouse(any())).thenReturn(response);
+        when(warehouseService.addWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(post("/api/v1/warehouse/")
@@ -147,7 +144,7 @@ public class warehouseControllerTest {
     void testPostBayBadRequest() throws Exception{
         // give
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>(null, false, "");
-        when(warehouseService.AddWarehouse(any())).thenReturn(response);
+        when(warehouseService.addWarehouse(any())).thenReturn(response);
 
         //When Then
         mockMvc.perform(post("/api/v1/warehouse/")

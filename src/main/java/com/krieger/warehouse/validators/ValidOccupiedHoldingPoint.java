@@ -1,20 +1,16 @@
 package com.krieger.warehouse.validators;
 
-
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
-
-import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
-import static java.lang.annotation.ElementType.FIELD;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ValidOccupaiedHoldingPointValidator.class)
 @Documented
 public @interface ValidOccupiedHoldingPoint {
-    String message() default "The OccupiedHoldingPoint musst be between 0 to HoldingPoint value.";
+    String message() default "The Occupied Holding Point must be between 0 to Holding Point value.";
 
     String HoldingPointField();
 
