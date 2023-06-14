@@ -12,13 +12,13 @@ public interface WarehouseService {
 
 
 
-    public ServiceResponse<GetWarehouseDto> getWarehause(Long id);
+    public ServiceResponse<GetWarehouseDto> getWarehouse(Long id);
 
-    public ServiceResponse<GetWarehouseDto> AddWarehause(NewWarehouseDto newWarehaus);
+    public ServiceResponse<GetWarehouseDto> AddWarehouse(NewWarehouseDto newWarehous);
 
-    public void deleteWarehause(Long id);
+    public void deleteWarehouse(Long id);
 
-    public ServiceResponse<GetWarehouseDto> updateWarehause(UpdateWarehouseDto uppdateWarehouse);
+    public ServiceResponse<GetWarehouseDto> updateWarehouse(UpdateWarehouseDto uppdateWarehouse);
 
     public ServiceResponse<Page<GetWarehouseDto>> getAll(int pageNo, int pageSize, String sortField, String sortOrder);
 }

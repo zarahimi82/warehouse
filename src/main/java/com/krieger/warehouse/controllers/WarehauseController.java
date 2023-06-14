@@ -27,7 +27,7 @@ public class WarehauseController {
 
         @GetMapping("/{id}")
         public ResponseEntity<ServiceResponse<GetWarehouseDto>> getById(@PathVariable Long id) {
-            return ResponseEntity.ok(warehouseService.getWarehause(id));
+            return ResponseEntity.ok(warehouseService.getWarehouse(id));
         }
 
        @GetMapping("/")
@@ -46,7 +46,7 @@ public class WarehauseController {
         @PostMapping()
         public ResponseEntity<ServiceResponse<GetWarehouseDto>> newWarehouse(@RequestBody NewWarehouseDto newWarehouseDto)
         {
-            ServiceResponse<GetWarehouseDto> response = warehouseService.AddWarehause(newWarehouseDto);
+            ServiceResponse<GetWarehouseDto> response = warehouseService.AddWarehouse(newWarehouseDto);
             if (!response.isSuccess()) {
                 return ResponseEntity.badRequest().body(response);
             }
@@ -56,7 +56,7 @@ public class WarehauseController {
         @PutMapping()
         public ResponseEntity<ServiceResponse<GetWarehouseDto>> updateWarehouse (@RequestBody UpdateWarehouseDto updateWarehouseDto)
         {
-            ServiceResponse<GetWarehouseDto> response = warehouseService.updateWarehause(updateWarehouseDto);
+            ServiceResponse<GetWarehouseDto> response = warehouseService.updateWarehouse(updateWarehouseDto);
             if (!response.isSuccess()) {
                 return ResponseEntity.badRequest().body(response);
             }
@@ -66,7 +66,7 @@ public class WarehauseController {
         @DeleteMapping("/{id}")
         public ResponseEntity  deleteWarehouse(@PathVariable Long id) {
 
-            warehouseService.deleteWarehause(id);
+            warehouseService.deleteWarehouse(id);
             return  ResponseEntity.ok().build();
         }
 }

@@ -5,7 +5,7 @@ import com.krieger.warehouse.dtos.warehouse.NewWarehouseDto;
 import com.krieger.warehouse.dtos.warehouse.UpdateWarehouseDto;
 import com.krieger.warehouse.models.ServiceResponse;
 import com.krieger.warehouse.models.Warehouse;
-import com.krieger.warehouse.repositories.WarehaousRepository;
+import com.krieger.warehouse.repositories.WarehouseRepository;
 import com.krieger.warehouse.validators.ObjectValidator;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
@@ -18,21 +18,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
-    private final WarehaousRepository warehaousRepository;
+    private final WarehouseRepository warehouseRepository;
     private static final ModelMapper modelMapper = new ModelMapper();
     private final ObjectValidator validator;
 
 
-    public WarehouseServiceImpl(WarehaousRepository warehaousRepository, ObjectValidator validator) {
-        this.warehaousRepository = warehaousRepository;
+    public WarehouseServiceImpl(WarehouseRepository warehouseRepository, ObjectValidator validator) {
+        this.warehouseRepository = warehouseRepository;
         this.validator = validator;
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> getWarehause(Long id) {
+    public ServiceResponse<GetWarehouseDto> getWarehouse(Long id) {
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {
-            Warehouse warehouse = warehaousRepository.findById(id).get();
+            Warehouse warehouse = warehouseRepository.findById(id).get();
             response.setData(modelMapper.map(warehouse  , GetWarehouseDto.class));
             response.setSuccess(true);
         }
@@ -45,12 +45,12 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> AddWarehause(NewWarehouseDto newWarehaus)
-    {   validator.validate(newWarehaus);
+    public ServiceResponse<GetWarehouseDto> AddWarehouse(NewWarehouseDto newWarehouse)
+    {   validator.validate(newWarehouse);
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {
-            Warehouse warehouse = new Warehouse(newWarehaus.getCode() , newWarehaus.getName() , newWarehaus.getAddress());
-            warehaousRepository.save(warehouse);
+            Warehouse warehouse = new Warehouse(newWarehouse.getCode() , newWarehouse.getName() , newWarehouse.getAddress());
+            warehouseRepository.save(warehouse);
             response.setData(modelMapper.map(warehouse  , GetWarehouseDto.class));
             response.setSuccess(true);
         }
@@ -64,20 +64,20 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public void deleteWarehause(Long id) {
-               warehaousRepository.deleteById(id);
+    public void deleteWarehouse(Long id) {
+               warehouseRepository.deleteById(id);
     }
 
     @Override
-    public ServiceResponse<GetWarehouseDto> updateWarehause(UpdateWarehouseDto uppdateWarehouseDto) {
+    public ServiceResponse<GetWarehouseDto> updateWarehouse(UpdateWarehouseDto uppdateWarehouseDto) {
         validator.validate(uppdateWarehouseDto);
         ServiceResponse<GetWarehouseDto> response = new ServiceResponse<>();
         try {
-            Warehouse warehouse = warehaousRepository.findById(uppdateWarehouseDto.getId()).get();
+            Warehouse warehouse = warehouseRepository.findById(uppdateWarehouseDto.getId()).get();
             warehouse.setAddress(uppdateWarehouseDto.getAddress());
             warehouse.setCode(uppdateWarehouseDto.getCode());
             warehouse.setName(uppdateWarehouseDto.getName());
-            warehaousRepository.save(warehouse);
+            warehouseRepository.save(warehouse);
             response.setData(modelMapper.map(warehouse,GetWarehouseDto.class));
             response.setSuccess(true);
         }
@@ -97,7 +97,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         Pageable pageable= PageRequest.of(pageNo-1 , pageSize,sort);
         ServiceResponse<Page<GetWarehouseDto>> response = new ServiceResponse<>();
         try {
-            Page<Warehouse> warehouses = warehaousRepository.findAll(pageable);
+            Page<Warehouse> warehouses = warehouseRepository.findAll(pageable);
             response.setData(warehouses.map(W  -> modelMapper.map(W, GetWarehouseDto.class)));
             response.setSuccess(true);
         }

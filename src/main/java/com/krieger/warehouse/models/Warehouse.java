@@ -45,6 +45,14 @@ public class Warehouse {
         this.address = address;
     }
 
+
+    public Warehouse(Long id, String code, String name, String address) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.address = address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
