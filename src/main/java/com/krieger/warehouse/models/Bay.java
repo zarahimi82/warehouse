@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @Table(uniqueConstraints = { @UniqueConstraint(name = "UniqueNumbersAndWarehouse", columnNames = { "rowNumber", "shelfNumber" ,"levelNumber" ,"warehouse_id" }) })
 public class Bay {
 
@@ -43,6 +46,17 @@ public class Bay {
     public Bay()
     {
         warehouse = new Warehouse();
+    }
+
+    public Bay(int rowNumber, int shelfNumber, int levelNumber, BayType type, int holldingPoint, int occupiedHoldingPoint, String tags, Warehouse warehouse) {
+        this.rowNumber = rowNumber;
+        this.shelfNumber = shelfNumber;
+        this.levelNumber = levelNumber;
+        this.type = type;
+        this.holldingPoint = holldingPoint;
+        this.occupiedHoldingPoint = occupiedHoldingPoint;
+        this.tags = tags;
+        this.warehouse = warehouse;
     }
 
     public void setOccupiedHoldingPoint(int occupiedHoldingPoint) {

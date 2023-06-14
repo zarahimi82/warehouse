@@ -78,7 +78,6 @@ public class BayServiceImpl implements  BayService{
 
             Bay newB = newDtoMapper(newBay);
             Bay savedBay = bayRepository.save(newB);
-            savedBay = bayRepository.findById(savedBay.getId()).get();
 
             response.setData(getDtoMapper(savedBay));
         }
@@ -108,7 +107,7 @@ public class BayServiceImpl implements  BayService{
             bay.setShelfNumber(updateBay.getShelfNumber());
             bay.setType(updateBay.getType());
             bay.setOccupiedHoldingPoint(updateBay.getOccupiedHoldingPoint());
-            bay.setTags(updateBay.getTags().stream().collect(Collectors.joining(";")));
+            bay.setTags(updateBay.getTags()!= null ? updateBay.getTags().stream().collect(Collectors.joining(";")) : null);
 
             bayRepository.save(bay);
             response.setData(getDtoMapper(bay));
